@@ -1,0 +1,54 @@
+/* Default link */
+.nav-link {
+  color: #555;
+  transition: all 0.2s ease;
+}
+
+/* Active link */
+.nav-link.active {
+  font-weight: bold;
+  color: #0d6efd;   /* Bootstrap primary */
+}
+
+/* .navbar {
+  width: 100%;
+  height: 60px;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+
+.logo {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  transition: 0.2s;
+}
+
+.nav-links a.active {
+  color: #ffd166;
+  font-weight: bold;
+  border-bottom: 2px solid #ffd166;
+}
+
+.nav-links a:hover {
+  color: #ffd166;
+} */

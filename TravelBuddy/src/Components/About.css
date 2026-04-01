@@ -1,0 +1,15 @@
+.about-container {
+  max-width: 780px;
+  margin: 110px auto 40px auto;
+  background: white;
+  padding: 28px 34px;
+  border-radius: 12px;
+  line-height: 1.7;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.about-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
