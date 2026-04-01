@@ -1,11 +1,11 @@
 import './Home.css';
-import Navbar from './Components/Navbar';
+import Navbar from '../Components/Navbar';
 
 
 export default function Home() {
   return (
     <>
-        <Navbar/>
+        <Navbar />
         <div className="container">
             <h1>Travel Buddy AI</h1>
             <p className="subtitle">Your personal AI trip planner</p>

@@ -1,7 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
-import About from './Components/About';
-import Home from './Components/Home';
+import About from './Pages/About';
+import Home from './Pages/Home';
 
 import {
   BrowserRouter as Router,
