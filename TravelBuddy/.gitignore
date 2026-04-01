@@ -4,12 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-.codex/
-*.sqlite
-*.sqlite-shm
-*.sqlite-wal
-logs/
-node_modules/
 
 # testing
 /coverage
