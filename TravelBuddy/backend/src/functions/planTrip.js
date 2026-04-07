@@ -23,7 +23,7 @@ app.http('planTrip', {
             }
 
             // Generative Model Initialization
-            console.log("API HIT");
+            //console.log("API HIT");
             const model = genAI.getGenerativeModel({
                 model: "gemini-2.5-flash-lite", 
                 systemInstruction: "You are a travel API. Return ONLY valid JSON. No conversational text, no markdown backticks or extra text.",
@@ -137,7 +137,7 @@ app.http('planTrip', {
             // 5. Clean & Parse JSON
             const cleanJson = text.replace(/```json|```/g, "").trim();
             const travelData = JSON.parse(cleanJson);
-            console.log(JSON.stringify(travelData.itinerary[0].activities, null, 2));
+            //console.log(JSON.stringify(travelData.itinerary[0].activities, null, 2));
 
             return {
                 status: 200,

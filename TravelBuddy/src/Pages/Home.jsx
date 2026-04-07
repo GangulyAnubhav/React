@@ -1,6 +1,6 @@
 import './Home.css';
 import Navbar from '../Components/Navbar';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
 
@@ -26,9 +26,11 @@ export default function Home() {
 
   // ✅ API Call
   const handlePlanTrip = async () => {
-    setLoading(true);
 
     try {
+      setLoading(true);
+      setResult(null);
+
       console.log("Inside handlePlanTrip")
       const response = await fetch(
         "http://localhost:7071/api/planTrip",
@@ -47,11 +49,11 @@ export default function Home() {
         }
       );
 
-      console.log("API Response Status:", response.status);
+      if (!response.ok) {
+        throw new Error("Failed to fetch trip plan");
+      }
 
       const data = await response.json();
-      console.log(data);
-
       setResult(data.data);
 
     } catch (error) {
@@ -62,9 +64,29 @@ export default function Home() {
     }
   };
 
+  // ✅ useEffect: Auto-save form data
+  useEffect(() => {
+    localStorage.setItem("tripForm", JSON.stringify(formData));
+  }, [formData]);
+
+  // ✅ useEffect: Load saved data on first render
+  useEffect(() => {
+    const saved = localStorage.getItem("tripForm");
+    if (saved) {
+      setFormData(JSON.parse(saved));
+    }
+  }, []);
+
   return (
     <>
       <Navbar />
+
+      {loading && (
+        <div className="loading-overlay">
+          <div className="spinner"></div>
+          <p>Planning your trip...</p>
+        </div>
+      )}
 
       <div className="container">
         <h1>Travel Buddy AI</h1>
