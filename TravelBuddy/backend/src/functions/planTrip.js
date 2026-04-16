@@ -1,5 +1,7 @@
 import { app } from "@azure/functions";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { verifyToken } from "../middleware/auth.js";
+
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const genAI = GEMINI_API_KEY ? new GoogleGenerativeAI(GEMINI_API_KEY) : null;
@@ -7,8 +9,18 @@ const genAI = GEMINI_API_KEY ? new GoogleGenerativeAI(GEMINI_API_KEY) : null;
 app.http('planTrip', {
     methods: ['POST'],
     authLevel: 'anonymous',
-    handler: async (request, context) => {        
+    handler: async (request, context) => {
         try {
+            // Verify Token
+            const user = verifyToken(request);
+            console.log("User from token:", user);
+            if (!user) {
+                return {
+                    status: 401,
+                    jsonBody: { error: "Unauthorized. Please log in." }
+                };
+            }
+
             if (!genAI) {
                 context.log("GEMINI_API_KEY is missing.");
                 return { status: 500, body: "Server Error: API Key missing." };

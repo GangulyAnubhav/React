@@ -2,6 +2,8 @@ import './Home.css';
 import Navbar from '../Components/Navbar';
 import { useState, useEffect } from "react";
 
+import Cookies from "js-cookie";
+
 export default function Home() {
 
   // ✅ State
@@ -31,6 +33,8 @@ export default function Home() {
       setLoading(true);
       setResult(null);
 
+      console.log("Token in Home:", Cookies.get("token"));
+
       console.log("Inside handlePlanTrip")
       const response = await fetch(
         "http://localhost:7071/api/planTrip",
@@ -38,6 +42,7 @@ export default function Home() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "authorization" : `Bearer ${Cookies.get("token") || ""}` // Include token if available
           },
           body: JSON.stringify({
             origin: formData.origin,
